@@ -1,0 +1,11 @@
+---
+description: General project context and conventions
+alwaysApply: true
+---
+
+# Project context
+
+- Prefer editing existing files over creating new ones unless the task explicitly requires new modules or components.
+- Follow existing patterns and style in the codebase.
+- Use the project's dependency manager and versions (see package.json, requirements.txt, etc.) when adding dependencies.
+- Prefer minimal, focused changes; avoid unnecessary refactors unless asked.
