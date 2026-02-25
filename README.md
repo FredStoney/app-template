@@ -37,6 +37,7 @@ npm run api:dev
 
 See [`documentation/`](./documentation/) for detailed guides:
 
+- [`new-app-checklist.md`](./documentation/new-app-checklist.md) — **start here** when reusing this template for a new project
 - [`setup.md`](./documentation/setup.md) — full setup notes and changes from the original boilerplate
 - [`stripe-cli.md`](./documentation/stripe-cli.md) — Stripe CLI for local webhook testing
 - [`gemeni-sveltekit.md`](./documentation/gemeni-sveltekit.md) — SvelteKit notes
