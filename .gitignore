@@ -144,6 +144,10 @@ dist
 
 .serverless/
 
+# SST (Ion) generated artifacts and platform
+
+.sst/
+
 # FuseBox cache
 
 .fusebox/
