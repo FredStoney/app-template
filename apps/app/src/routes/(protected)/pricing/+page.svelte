@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AppNav from '$lib/components/AppNav.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -30,12 +31,7 @@
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50">
-	<nav class="border-b border-gray-200 bg-white shadow-sm">
-		<div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-			<a href="/dashboard" class="text-lg font-semibold text-gray-900">Dashboard</a>
-			<span class="text-sm text-gray-500">{data.user.email}</span>
-		</div>
-	</nav>
+	<AppNav email={data.user.email} />
 
 	<main class="mx-auto max-w-5xl px-4 py-16">
 		<div class="text-center">

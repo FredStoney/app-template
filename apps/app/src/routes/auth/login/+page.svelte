@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { authClient } from '$lib/auth-client';
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
 
 	let isLoading = $state(false);
 	let error = $state('');
@@ -10,7 +13,7 @@
 
 		const { error: signInError } = await authClient.signIn.social({
 			provider: 'google',
-			callbackURL: '/dashboard'
+			callbackURL: data.returnTo
 		});
 
 		if (signInError) {

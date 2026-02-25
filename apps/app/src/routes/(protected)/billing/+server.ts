@@ -1,10 +1,6 @@
 import { json, error } from '@sveltejs/kit';
-import Stripe from 'stripe';
+import { stripe } from '$lib/stripe';
 import type { RequestHandler } from './$types';
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-	apiVersion: '2026-01-28.clover'
-});
 
 export const POST: RequestHandler = async ({ locals, url }) => {
 	const user = locals.user;

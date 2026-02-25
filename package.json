@@ -31,7 +31,6 @@
 		"stripe:listen": "stripe listen --forward-to localhost:3001/webhooks/stripe"
 	},
 	"devDependencies": {
-		"@types/bun": "latest",
 		"oxfmt": "^0.27.0",
 		"oxlint": "^1.42.0",
 		"typescript": "^5",

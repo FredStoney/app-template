@@ -9,7 +9,6 @@ import { prettyJSON } from 'hono/pretty-json';
 import { requestId } from 'hono/request-id';
 import { handleZodError } from '@lib/errors';
 import { Scalar } from '@scalar/hono-api-reference';
-import { exampleRoutes } from './example/example.routes';
 import { stripeRoutes } from './stripe/stripe.routes';
 
 const app = new OpenAPIHono({
@@ -63,7 +62,6 @@ app.doc('/openapi.json', (c) => ({
 
 app.get('/reference', Scalar({ url: '/openapi.json', showDeveloperTools: 'never' }));
 
-app.route('/examples', exampleRoutes);
 app.route('/webhooks', stripeRoutes);
 
 const port = Number(process.env.PORT) || 3001;

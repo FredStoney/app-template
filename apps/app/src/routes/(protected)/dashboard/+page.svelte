@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { authClient } from '$lib/auth-client';
 	import { goto } from '$app/navigation';
+	import AppNav from '$lib/components/AppNav.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -19,28 +20,23 @@
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50">
-	<nav class="border-b border-gray-200 bg-white shadow-sm">
-		<div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-			<h1 class="text-lg font-semibold text-gray-900">Dashboard</h1>
-			<div class="flex items-center gap-4">
-				{#if data.user.image}
-					<img
-						src={data.user.image}
-						alt={data.user.name}
-						class="h-8 w-8 rounded-full object-cover"
-					/>
-				{/if}
-				<span class="text-sm text-gray-600">{data.user.name}</span>
-				<button
-					onclick={signOut}
-					disabled={isSigningOut}
-					class="rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-700 transition-colors hover:bg-gray-50 disabled:opacity-50"
-				>
-					{isSigningOut ? 'Signing out…' : 'Sign out'}
-				</button>
-			</div>
-		</div>
-	</nav>
+	<AppNav email={data.user.email}>
+		{#if data.user.image}
+			<img
+				src={data.user.image}
+				alt={data.user.name}
+				class="h-8 w-8 rounded-full object-cover"
+			/>
+		{/if}
+		<span class="text-sm text-gray-600">{data.user.name}</span>
+		<button
+			onclick={signOut}
+			disabled={isSigningOut}
+			class="rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-700 transition-colors hover:bg-gray-50 disabled:opacity-50"
+		>
+			{isSigningOut ? 'Signing out…' : 'Sign out'}
+		</button>
+	</AppNav>
 
 	<main class="mx-auto max-w-5xl px-4 py-10">
 		<div class="rounded-2xl bg-white p-8 shadow-sm">
