@@ -25,6 +25,7 @@
 			<img
 				src={data.user.image}
 				alt={data.user.name}
+				referrerpolicy="no-referrer"
 				class="h-8 w-8 rounded-full object-cover"
 			/>
 		{/if}
