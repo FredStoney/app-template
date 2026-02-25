@@ -1,0 +1,34 @@
+{
+	"name": "@boilerplate/app",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test": "playwright test",
+		"test:ui": "playwright test --ui",
+		"test:report": "playwright show-report"
+	},
+	"dependencies": {
+		"@boilerplate/auth": "*",
+		"better-auth": "^1.4.0",
+		"stripe": "^20.3.1"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.58.2",
+		"@sveltejs/adapter-auto": "^7.0.0",
+		"@sveltejs/kit": "^2.50.2",
+		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"@tailwindcss/vite": "^4.1.18",
+		"svelte": "^5.49.2",
+		"svelte-check": "^4.3.6",
+		"tailwindcss": "^4.1.18",
+		"vite": "^7.3.1",
+		"zod": "^4.3.6"
+	}
+}

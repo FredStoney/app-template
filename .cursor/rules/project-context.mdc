@@ -5,7 +5,10 @@ alwaysApply: true
 
 # Project context
 
+**First goal (POC):** Build a proof of concept for (1) **log in and sign up via Google**, and (2) **payments via Stripe**.
+
 - Prefer editing existing files over creating new ones unless the task explicitly requires new modules or components.
 - Follow existing patterns and style in the codebase.
 - Use the project's dependency manager and versions (see package.json, requirements.txt, etc.) when adding dependencies.
 - Prefer minimal, focused changes; avoid unnecessary refactors unless asked.
+- Project documentation and Cursor context live in **documentation/**; consult and update it when adding or changing conventions, architecture, or Cursor rules/commands.

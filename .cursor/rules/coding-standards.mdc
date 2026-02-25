@@ -1,0 +1,31 @@
+---
+description: Core coding standards — naming, structure, and quality
+alwaysApply: true
+---
+
+# Coding standards
+
+## Naming
+- **Variables and functions**: `camelCase`. Use descriptive names; avoid single letters except loop indices (`i`, `j`) or well-known abbreviations.
+- **Constants / config**: `UPPER_SNAKE_CASE` or `camelCase` depending on language convention.
+- **Types, classes, components, interfaces**: `PascalCase`.
+- **Files**: match the primary export (e.g. `UserProfile.tsx`, `useAuth.ts`). Use kebab-case for multi-word filenames if that's the project norm.
+- **Booleans**: prefix with `is`, `has`, `can`, `should` (e.g. `isLoading`, `hasPermission`).
+
+## Structure and design
+- **Single responsibility**: One clear purpose per function, class, or module. Split when a unit does more than one thing.
+- **DRY**: Don't repeat yourself. Extract shared logic into helpers, hooks, or utilities; avoid copy-paste.
+- **Small units**: Prefer short functions and small files. If a file grows beyond ~200–300 lines, consider splitting.
+- **Explicit over clever**: Prefer readable, straightforward code over clever one-liners or obscure idioms.
+- **Fail fast**: Validate inputs and preconditions early; return or throw before doing work with invalid state.
+
+## Error handling
+- Handle errors at the right layer (e.g. UI shows messages, API returns structured errors).
+- Prefer typed errors or error codes where the language supports it.
+- Log enough context for debugging, but avoid logging secrets or PII.
+- Don't swallow errors silently; at minimum log, or rethrow after handling.
+
+## Formatting and style
+- Follow the project's existing formatter and linter (e.g. Prettier, ESLint, Black, Ruff).
+- Use consistent quote style, indentation, and line length as configured in the repo.
+- Leave one blank line between top-level declarations; no trailing newlines at EOF beyond one.

@@ -1,0 +1,22 @@
+---
+description: Keep .env.example in sync whenever env vars are added, removed, or renamed
+alwaysApply: true
+---
+
+# .env.example hygiene
+
+`.env.example` is the source of truth for what environment variables the project needs. It must be kept in sync with the actual variables used in the codebase.
+
+## Rules
+
+- **Add a key whenever you introduce a new env var**: If you reference a new `process.env.FOO`, `import.meta.env.FOO`, or `env.FOO` anywhere in the code, add `FOO=` (with a placeholder value or blank) to `.env.example` in the same change.
+- **Remove the key when you remove the var**: If an env var is deleted or renamed in code, remove or rename the corresponding line in `.env.example`.
+- **Placeholder values only**: `.env.example` must never contain real secrets, tokens, or passwords. Use descriptive placeholders (e.g. `STRIPE_SECRET_KEY=sk_test_your_key_here`).
+- **Keep keys alphabetically ordered** within logical groups to make diffs easy to read.
+- **Add a short inline comment** for any non-obvious variable explaining what it is or where to get it (e.g. `# From the Stripe dashboard → Developers → API keys`).
+
+## When to check
+
+- After any change that adds, removes, or renames an environment variable.
+- Before finalising a feature that introduces a new integration (e.g. a new OAuth provider, payment gateway, or third-party service).
+- During code review: confirm `.env.example` was updated alongside the code change.

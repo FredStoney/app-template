@@ -1,0 +1,13 @@
+---
+description: Documentation — comments, README, and public APIs
+globs: ["**/README*", "**/*.md", "**/docs/**"]
+alwaysApply: false
+---
+
+# Documentation
+
+- **When to comment**: Explain *why* and non-obvious constraints, not *what* the code does. Avoid comments that restate the code. Keep comments up to date when behavior changes.
+- **Public APIs**: Document exported functions, classes, and types—purpose, parameters, return value, and notable errors or side effects. Use the language's standard doc format (JSDoc, docstrings, etc.).
+- **README**: Include how to install, configure (e.g. env vars), run, and test. Link to detailed docs if they exist. Keep setup steps minimal and reproducible.
+- **TODOs**: Use a consistent format (e.g. `TODO(author): brief description`) and track them; resolve or convert to issues instead of leaving stale TODOs.
+- **Sensitive details**: Don't document internal secrets, bypasses, or security-sensitive internals in comments or docs that might be committed or published.

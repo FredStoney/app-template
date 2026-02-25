@@ -1,0 +1,49 @@
+---
+description: After UI changes, check the Playwright smoke suite for tests that may be affected and run them
+globs: ["apps/app/src/**/*.svelte", "apps/app/src/**/*.ts", "apps/app/src/**/*.css", "apps/app/static/**"]
+alwaysApply: false
+---
+
+# UI changes — Playwright smoke check
+
+When any file under `apps/app/src/` or `apps/app/static/` is added or edited:
+
+## 1. Check the smoke suite for affected tests
+
+Open `apps/app/tests/smoke.test.ts` (and any other files in `apps/app/tests/`) and identify tests that could be broken by the change:
+
+| Change type | Tests likely affected |
+|-------------|----------------------|
+| Editing or removing an `<h1>` | `home page has expected heading` |
+| Changing `<title>` or removing it | `page title is set` |
+| Adding, removing, or changing a route path | `home page loads and returns 200`, `no broken internal links` |
+| Removing or renaming an internal `<a href="...">` | `no broken internal links` |
+| Changing a component that is rendered on the tested route | Any test that asserts on that route |
+
+## 2. Run the affected tests
+
+Run the Playwright suite from the repo root before considering the UI change done:
+
+```bash
+# Run the full e2e smoke suite (builds + previews the app first)
+npm test
+
+# Or open interactive UI to run/debug specific tests
+npm run test:ui
+```
+
+If only one test file needs checking:
+
+```bash
+cd apps/app && npx playwright test tests/smoke.test.ts
+```
+
+## 3. If a test fails
+
+- **Fix the implementation** if the failure reveals a real regression.
+- **Update the test** only if the change is intentional and the old assertion is now wrong (e.g. the heading text was deliberately renamed). Document why in the test or a comment.
+- **Do not skip or delete a failing test** without understanding the cause.
+
+## 4. If the UI change introduces new testable behaviour
+
+Add a new test to `apps/app/tests/smoke.test.ts` (or a new file in `apps/app/tests/`). Follow the patterns already in the suite — see `documentation/testing.md` for guidance.

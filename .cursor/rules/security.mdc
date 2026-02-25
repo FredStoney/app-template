@@ -1,0 +1,12 @@
+---
+description: Security rules — secrets, input, and safe defaults
+alwaysApply: true
+---
+
+# Security
+
+- **Secrets**: Never commit API keys, passwords, tokens, or private keys. Use env vars or a secrets manager; reference them in code, don't embed. Add `.env` (and `.env.local` etc.) to `.gitignore` if used.
+- **Input validation**: Validate and sanitize all user input and external data. Assume input is hostile; reject or normalize before use.
+- **Injection**: Use parameterized queries for SQL; avoid building queries or commands from string concatenation. Use safe APIs for HTML/script (e.g. escaping, CSP).
+- **Sensitive data**: Don't log passwords, tokens, or full PII. Redact or omit in logs and error messages.
+- **Dependencies**: Prefer well-maintained packages; check for known vulnerabilities before adding or upgrading. Run audit tools (e.g. `npm audit`, `pip-audit`) in CI when available.

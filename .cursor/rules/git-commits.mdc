@@ -1,0 +1,15 @@
+---
+description: Git and commit message conventions
+alwaysApply: false
+---
+
+# Git and commits
+
+- **Commit scope**: One logical change per commit. Split large changes into smaller commits that build on each other and are easy to review or revert.
+- **Message format**: Use a short subject line (ideally ≤50 chars), then an optional body for context. Example:
+  - `feat(auth): add password reset flow`
+  - `fix(api): validate page size to prevent overflow`
+  - `chore(deps): bump lodash to 4.17.21`
+- **Subject style**: Imperative mood ("add" not "added"), no period at the end. Prefix with type: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore` (and scope in parentheses when helpful).
+- **Body**: Explain what changed and why when the subject isn't enough. Reference issues or tickets if the project uses them.
+- **Branches**: Use short, descriptive branch names (e.g. `feat/oauth-login`, `fix/validation-error`). Follow any team naming convention.

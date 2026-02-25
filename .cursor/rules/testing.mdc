@@ -1,0 +1,14 @@
+---
+description: Testing — when to test, structure, and quality
+globs: ["**/*.test.*", "**/*.spec.*", "**/tests/**", "**/__tests__/**", "**/test/**"]
+alwaysApply: false
+---
+
+# Testing
+
+- **Naming**: Test names should describe behavior, e.g. `it('returns 404 when user is not found')` or `test('submit disables button while loading')`. Avoid vague names like `test1` or `works`.
+- **Arrange–Act–Assert**: Structure tests as setup (arrange), run the code (act), then assert outcomes. Keep each test focused on one behavior.
+- **Independence**: Tests must not depend on each other or on shared mutable state. Use fresh fixtures or mocks per test so order and parallelism don't matter.
+- **What to test**: Cover happy paths, important edge cases, and expected failures. Prefer testing behavior and outcomes over implementation details.
+- **Mocks**: Mock external I/O (network, DB, files). Don't over-mock; prefer real units where fast and simple. Document why something is mocked.
+- **Assertions**: Prefer a single logical assertion per test when practical. Use clear assertion messages so failures are easy to diagnose.

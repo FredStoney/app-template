@@ -1,0 +1,13 @@
+---
+description: Prioritize planning and clarity before writing or changing code
+alwaysApply: true
+---
+
+# Planning before execution
+
+- **Plan first**: For non-trivial tasks, briefly outline approach, steps, or affected areas before editing or running commands. Don't jump straight to code changes.
+- **Seek approval**: After presenting the implementation plan, explicitly ask the user to approve it before making any code changes. Wait for a clear confirmation (e.g. "yes", "looks good", "go ahead") before proceeding.
+- **Clarify scope**: If the request is ambiguous or has multiple interpretations, ask or state assumptions before implementing.
+- **Break down work**: For multi-step or multi-file work, identify the order of operations and dependencies (e.g. types → API → UI) and proceed in that order.
+- **Reuse existing structure**: Before adding new files or patterns, check the codebase and documentation for existing conventions, modules, or similar solutions.
+- **Minimal first steps**: Prefer a small, verifiable first change over a large refactor. Expand once the approach is validated.

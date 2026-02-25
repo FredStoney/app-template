@@ -1,0 +1,30 @@
+---
+description: Prioritize test-driven development; run tests before and after changes
+alwaysApply: true
+---
+
+# Test-driven development (TDD)
+
+## Approach
+- **Prefer TDD**: When adding or changing behavior, write or update tests first (red), then implement until tests pass (green), then refactor if needed (refactor).
+- **Tests as specification**: Treat tests as the definition of correct behavior. If behavior is ambiguous, capture the intended behavior in a test before implementing.
+- **Coverage for new code**: New features, modules, or components should include or be covered by tests. Bug fixes should include a regression test.
+
+## Running tests
+- **Run tests yourself**: Execute the project's test command during development. Use the same package manager as the project (e.g. `npm test`, `pnpm test`, `bun test`).
+- **When to run**:
+  - Before committing or finalizing changes, run the full test suite.
+  - After implementing a feature or fix, run the relevant tests (file, directory, or full suite).
+  - When debugging a failing test, run that test (or a focused subset) repeatedly until it passes.
+- **Commands**: Prefer the scripts defined in `package.json` (e.g. `test`, `test:unit`, `test:watch`). If the project has no test script, use the framework's CLI (e.g. `npx vitest` for Vitest in a Vite/Svelte project).
+- **Interpret results**: If any test fails, fix the implementation or update the test only when the requirement has legitimately changed. Do not leave failing tests in place.
+
+## Test structure
+- **Placement**: Colocate unit tests with source (e.g. `*.test.ts` beside `*.ts`) or in a dedicated `tests`/`__tests__` directory, following existing project layout.
+- **Naming**: Name test files so they're clearly associated with the module under test (e.g. `UserProfile.test.svelte.ts`, `auth.test.ts`).
+- **Clarity**: Each test should have a clear description and assert one behavior. Prefer small, focused tests over large, multi-behavior tests.
+
+## Integration with Cursor
+- When asked to add a feature or fix a bug, consider writing or updating tests as part of the same change set.
+- After editing code that has tests, run the appropriate test command in the terminal and report pass/fail. Fix any failures before considering the task done.
+- If the project has a watch mode (e.g. `vitest --watch`), you may use it during iterative development; otherwise run the test command after each logical change.

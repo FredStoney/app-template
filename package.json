@@ -1,0 +1,40 @@
+{
+	"name": "app-template",
+	"private": true,
+	"workspaces": {
+		"packages": [
+			"apps/*",
+			"packages/*"
+		],
+		"catalog": {
+			"@scalar/hono-api-reference": "^0.9.37",
+			"better-auth": "^1.4.0",
+			"hono": "^4.11.7",
+			"zod": "^4.3.6",
+			"@hono/zod-openapi": "^1.2.0",
+			"drizzle-kit": "1.0.0-beta.15-859cf75",
+			"drizzle-orm": "1.0.0-beta.15-859cf75"
+		}
+	},
+	"type": "module",
+	"scripts": {
+		"db:generate": "npm run generate -w @boilerplate/db",
+		"db:migrate": "npm run migrate -w @boilerplate/db",
+		"db:push": "npm run push -w @boilerplate/db",
+		"db:studio": "npm run studio -w @boilerplate/db",
+		"api:dev": "npm run dev -w @boilerplate/api",
+		"app:dev": "npm run dev -w @boilerplate/app",
+		"test": "npm run test -w @boilerplate/app",
+		"test:ui": "npm run test:ui -w @boilerplate/app",
+		"test:unit": "vitest run",
+		"test:unit:watch": "vitest",
+		"stripe:listen": "stripe listen --forward-to localhost:3001/webhooks/stripe"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"oxfmt": "^0.27.0",
+		"oxlint": "^1.42.0",
+		"typescript": "^5",
+		"vitest": "^3.2.4"
+	}
+}
