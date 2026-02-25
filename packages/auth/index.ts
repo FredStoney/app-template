@@ -15,5 +15,15 @@ export const auth = betterAuth({
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET!
 		}
 	},
-	plugins: [organization()]
+	plugins: [organization()],
+	rateLimit: {
+		window: 60,
+		max: 20
+	},
+	advanced: {
+		ipAddress: {
+			// Prefer Cloudflare's header when behind CF, fall back to standard proxy header
+			ipAddressHeaders: ['cf-connecting-ip', 'x-forwarded-for']
+		}
+	}
 });

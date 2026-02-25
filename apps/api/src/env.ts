@@ -1,12 +1,14 @@
-import { config } from 'dotenv';
-import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
 import { z } from 'zod';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-config({ path: resolve(__dirname, '../../../.env') });
+// Load .env only in local development — Lambda injects env vars at runtime
+if (process.env.NODE_ENV !== 'production') {
+	const { config } = await import('dotenv');
+	const { fileURLToPath } = await import('url');
+	const { dirname, resolve } = await import('path');
+	const __filename = fileURLToPath(import.meta.url);
+	const __dirname = dirname(__filename);
+	config({ path: resolve(__dirname, '../../../.env') });
+}
 
 const envSchema = z.object({
 	DATABASE_URL: z.string().min(1, 'DATABASE_URL is required'),

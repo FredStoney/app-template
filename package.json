@@ -12,12 +12,13 @@
 			"hono": "^4.11.7",
 			"zod": "^4.3.6",
 			"@hono/zod-openapi": "^1.2.0",
-			"drizzle-kit": "1.0.0-beta.15-859cf75",
-			"drizzle-orm": "1.0.0-beta.15-859cf75"
+			"drizzle-kit": "^0.31.9",
+			"drizzle-orm": "^0.45.1"
 		}
 	},
 	"type": "module",
 	"scripts": {
+		"db:start": "bash scripts/start-db.sh",
 		"db:generate": "npm run generate -w @boilerplate/db",
 		"db:migrate": "npm run migrate -w @boilerplate/db",
 		"db:push": "npm run push -w @boilerplate/db",
@@ -31,8 +32,10 @@
 		"stripe:listen": "stripe listen --forward-to localhost:3001/webhooks/stripe"
 	},
 	"devDependencies": {
+		"@types/node": "^25.3.0",
 		"oxfmt": "^0.27.0",
 		"oxlint": "^1.42.0",
+		"sst": "^4.0.6",
 		"typescript": "^5",
 		"vitest": "^3.2.4"
 	}

@@ -37,6 +37,7 @@ export async function handleCheckoutSessionCompleted(
 			stripeSubscriptionId: subscriptionId,
 			stripePriceId: priceId,
 			status: stripeSubscription.status,
+			cancelAtPeriodEnd: stripeSubscription.cancel_at_period_end,
 			currentPeriodEnd,
 			createdAt: new Date(),
 			updatedAt: new Date()
@@ -45,6 +46,7 @@ export async function handleCheckoutSessionCompleted(
 			target: subscription.stripeSubscriptionId,
 			set: {
 				status: stripeSubscription.status,
+				cancelAtPeriodEnd: stripeSubscription.cancel_at_period_end,
 				stripePriceId: priceId,
 				currentPeriodEnd,
 				updatedAt: new Date()
@@ -67,6 +69,7 @@ export async function handleSubscriptionUpdated(
 		.update(subscription)
 		.set({
 			status: stripeSubscription.status,
+			cancelAtPeriodEnd: stripeSubscription.cancel_at_period_end,
 			stripePriceId: priceId,
 			currentPeriodEnd,
 			updatedAt: new Date()

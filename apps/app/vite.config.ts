@@ -11,6 +11,9 @@ export default defineConfig(({ mode }) => {
 
 	return {
 		plugins: [tailwindcss(), sveltekit()],
-		envDir: monorepoRoot
+		envDir: monorepoRoot,
+		ssr: {
+			noExternal: ['svelte-sonner']
+		}
 	};
 });
