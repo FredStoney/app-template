@@ -1,4 +1,4 @@
-import './env.js';
+import { env } from './env.js';
 import { serve } from '@hono/node-server';
 import { OpenAPIHono } from '@hono/zod-openapi';
 import { csrf } from 'hono/csrf';
@@ -7,7 +7,7 @@ import { db } from '@boilerplate/db';
 import { sql } from 'drizzle-orm';
 import { prettyJSON } from 'hono/pretty-json';
 import { requestId } from 'hono/request-id';
-import { handleZodError } from '@lib/errors';
+import { handleZodError, handleError } from '@lib/errors';
 import { Scalar } from '@scalar/hono-api-reference';
 import { stripeRoutes } from './stripe/stripe.routes';
 
@@ -20,6 +20,8 @@ app.use(logger());
 app.use(prettyJSON());
 
 app.use(csrf());
+
+app.onError(handleError);
 
 // Healthcheck
 app.get('/healthcheck', async (c) => {
@@ -64,8 +66,6 @@ app.get('/reference', Scalar({ url: '/openapi.json', showDeveloperTools: 'never'
 
 app.route('/webhooks', stripeRoutes);
 
-const port = Number(process.env.PORT) || 3001;
-
-serve({ fetch: app.fetch, port }, (info) => {
+serve({ fetch: app.fetch, port: env.PORT }, (info) => {
 	console.log(`API running on http://localhost:${info.port}`);
 });

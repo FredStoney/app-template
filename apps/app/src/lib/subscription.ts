@@ -1,13 +1,11 @@
-import { db, subscription, eq } from '@boilerplate/db';
-
-const ACTIVE_STATUSES = ['active', 'trialing'] as const;
+import { db, subscription, eq, and, inArray, ACTIVE_SUBSCRIPTION_STATUSES } from '@boilerplate/db';
 
 export async function getActiveSubscription(userId: string) {
 	const rows = await db
 		.select()
 		.from(subscription)
-		.where(eq(subscription.userId, userId))
+		.where(and(eq(subscription.userId, userId), inArray(subscription.status, ACTIVE_SUBSCRIPTION_STATUSES)))
 		.limit(1);
 
-	return rows.find((s) => (ACTIVE_STATUSES as readonly string[]).includes(s.status)) ?? null;
+	return rows[0] ?? null;
 }

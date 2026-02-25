@@ -6,7 +6,7 @@ export const paginationQuerySchema = z.object({
 		example: 10
 	}),
 	cursor: z.string().optional().openapi({
-		description: 'Cursor for pagination (file id)'
+		description: 'Cursor for pagination (opaque ID of the last item in the previous page)'
 	})
 });
 

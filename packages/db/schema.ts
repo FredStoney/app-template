@@ -1,5 +1,17 @@
 import { pgTable, text, timestamp, boolean, index, uniqueIndex } from 'drizzle-orm/pg-core';
 
+export type SubscriptionStatus =
+	| 'active'
+	| 'trialing'
+	| 'past_due'
+	| 'canceled'
+	| 'incomplete'
+	| 'incomplete_expired'
+	| 'unpaid'
+	| 'paused';
+
+export const ACTIVE_SUBSCRIPTION_STATUSES: SubscriptionStatus[] = ['active', 'trialing'];
+
 export const user = pgTable('user', {
 	id: text('id').primaryKey(),
 	name: text('name').notNull(),
